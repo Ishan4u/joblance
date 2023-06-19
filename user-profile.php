@@ -1,3 +1,14 @@
+<?php include './components/connect.php';
+
+if (isset($_COOKIE['user_id'])) {
+  $user_id = $_COOKIE['user_id'];
+} else {
+  $user_id = '';
+  header('location:user-sign-in.php');
+}
+
+?>
+
 <?php include './components/header.php'; ?>
 
 <?php
@@ -30,7 +41,7 @@ if (isset($_POST['save'])) {
           <h3>
             <?php echo $fetch_user['name']; ?>
           </h3>
-          <p>Web Developer</p>
+          <p><?php echo $fetch_user['profession']; ?></p>
           <ul>
             <li>
               <a href="tel:+100230342">
@@ -52,6 +63,11 @@ if (isset($_POST['save'])) {
             <a href="#" target="_blank"><i class="bx bxl-twitter"></i></a>
             <a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a>
           </div>
+
+          <div class="candidate-social">
+            <a href="update-user.php?get_id=<?= $fetch_user['id']; ?>" >Edit</a>
+            
+          </div>
         </div>
       </div>
       <div class="col-lg-8">
@@ -72,7 +88,9 @@ if (isset($_POST['save'])) {
           <div class="candidate-info-text candidate-education">
             <h3>Education</h3>
             <div class="education-info">
-              <h4><?php echo $fetch_cv['education'] ?></h4>
+              <h4>
+                <?php echo $fetch_cv['education'] ?>
+              </h4>
               <!-- <p>Princeton University, USA</p> -->
               <!-- <span>2012-2016</span> -->
             </div>
@@ -103,6 +121,12 @@ if (isset($_POST['save'])) {
               <li>SQL</li>
               <li>Ruby</li>
             </ul> -->
+          </div>
+
+          <div class="candidate-info-text text-center">
+            <div class="theme-btn">
+              <a href="update-user-profile.php?get_id=<?= $fetch_cv['c_id']; ?>" class="default-btn">Edit Info</a>
+            </div>
           </div>
 
         <?php } else { ?>
@@ -200,8 +224,22 @@ if (isset($_POST['save'])) {
             </form>
           </div>
 
-        <?php }
-        ?>
+          <!-- Sweet Alert -->
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script>
+            Swal.fire({
+              icon: 'success',
+              title: 'Please fill your information',
+              showConfirmButton: true,
+              showCloseButton: true,
+              // text: 'Something went wrong!',
+              // footer: '<a class="inline-btn" href="login.php">Login</a>'
+            })
+          </script>
+
+          <!-- Sweet alert End -->
+
+        <?php } ?>
 
 
 

@@ -1,20 +1,3 @@
-<?php
-
-
-$db_name = 'mysql:host=localhost:3306;dbname=joblance';
-$user_name = 'root';
-$user_password = 'ishan@1999';
-
-$conn = new PDO($db_name, $user_name, $user_password);
-
-
-if(isset($_COOKIE['user_id'])){
-   $user_id = $_COOKIE['user_id'];
-}else{
-   $user_id = '';
-}
-?>
-
 <!doctype html>
 <html lang="zxx">
 
@@ -93,24 +76,8 @@ if(isset($_COOKIE['user_id'])){
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href="#" class="nav-link dropdown-toggle active">Home</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                        <a href="index.html" class="nav-link active">Home One</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index-two.html" class="nav-link">Home Two</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index-three.html" class="nav-link">Home Three</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index-four.html" class="nav-link">Home Four</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="index-five.html" class="nav-link">Home Five</a>
-                                    </li>
-                                </ul>
+                                <a href="index.php" class="nav-link">Home</a>
+
                             </li>
                             <li class="nav-item">
                                 <a href="about.html" class="nav-link">About</a>
@@ -219,16 +186,17 @@ if(isset($_COOKIE['user_id'])){
                                 <a href="contact.html" class="nav-link">Contact Us</a>
                             </li>
                         </ul>
-                        <?php if(!$user_id == ''){ ?>
+                        <?php if (!$user_id == '') { ?>
                             <div class="other-option">
-                            <a href="user-profile.php" class="signup-btn">View Profile</a>
-                            <a href="user-sign-out.php" class="signin-btn">Sign out</a>
-                        </div>
-                            <?php }else{ ?>
-                        <div class="other-option">
-                            <a href="user-signup.php" class="signup-btn">Sign Up</a>
-                            <a href="user-sign-in.php" class="signin-btn">Sign In</a>
-                        </div>
+                                <a href="user-profile.php" class="signup-btn">View Profile</a>
+                                <a href="user-sign-out.php" class="signin-btn">Sign out</a>
+                            </div>
+                        <?php } else { ?>
+                            <div class="other-option">
+                                <a href="user-signup.php" class="signup-btn">Sign Up</a>
+                                <a href="user-sign-in.php" class="signin-btn">Sign In</a>
+                                <a href="user-sign-in.php" class="signin-btn">Post A Job</a>
+                            </div>
                         <?php } ?>
                     </div>
                 </nav>
