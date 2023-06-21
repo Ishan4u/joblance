@@ -15,10 +15,10 @@ if (isset($_COOKIE['com_id'])) {
 }
 
 
-/* fetch company */
-$select_company = $conn->prepare("SELECT * FROM `company` WHERE com_id = ?");
-$select_company->execute([$com_id]);
-$fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
+/* fetch all company */
+// $select_company = $conn->prepare("SELECT * FROM `company`");
+// $select_company->execute();
+// $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
 ?>
 <?php include './components/header.php'; ?>
 
@@ -83,9 +83,10 @@ $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
 
             <?php
 
-            /* fetch post */
-            $select_post = $conn->prepare("SELECT * FROM `post` WHERE com_id = ?");
-            $select_post->execute([$com_id]);
+            /* fetch all post */
+            $select_post = $conn->prepare("SELECT p.*, c.location FROM post p
+            INNER JOIN company c ON p.com_id = c.com_id");
+            $select_post->execute();
             if ($select_post->rowCount() > 0) {
                 while ($fetch_post = $select_post->fetch(PDO::FETCH_ASSOC)) { ?>
 
@@ -110,7 +111,7 @@ $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
                                             <!-- <li>Via <a href="#">Tourt Design LTD</a></li> -->
                                             <li>
                                                 <i class='bx bx-location-plus'></i>
-                                                <?php echo $fetch_company['location']; ?>
+                                                <?php echo $fetch_post['location']; ?>
                                             </li>
                                         </ul>
                                     </div>
