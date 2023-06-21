@@ -62,7 +62,7 @@
     <div class="navbar-area">
 
         <div class="mobile-nav">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="assets/img/logo.png" alt="logo">
             </a>
         </div>
@@ -70,7 +70,7 @@
         <div class="main-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="index.php">
                         <img src="assets/img/logo.png" alt="logo">
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -186,16 +186,21 @@
                                 <a href="contact.html" class="nav-link">Contact Us</a>
                             </li>
                         </ul>
-                        <?php if (!$user_id == '') { ?>
+                        <?php if (isset($user_id) && !$user_id  == '') { ?>
                             <div class="other-option">
                                 <a href="user-profile.php" class="signup-btn">View Profile</a>
                                 <a href="user-sign-out.php" class="signin-btn">Sign out</a>
+                            </div>
+                        <?php }elseif(isset($com_id) && !$com_id == ''){ ?>
+                            <div class="other-option">
+                                <a href="company-profile.php" class="signup-btn">View company Profile</a>
+                                <a href="company-sign-out.php" class="signin-btn">Sign out</a>
                             </div>
                         <?php } else { ?>
                             <div class="other-option">
                                 <a href="user-signup.php" class="signup-btn">Sign Up</a>
                                 <a href="user-sign-in.php" class="signin-btn">Sign In</a>
-                                <a href="user-sign-in.php" class="signin-btn">Post A Job</a>
+                                <a href="post-job.php" class="signin-btn">Post A Job</a>
                             </div>
                         <?php } ?>
                     </div>

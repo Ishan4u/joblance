@@ -7,6 +7,18 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+DROP TABLE IF EXISTS `company`;
+CREATE TABLE `company` (
+  `com_id` varchar(255) NOT NULL,
+  `com_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `phone` varchar(12) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 DROP TABLE IF EXISTS `cv`;
 CREATE TABLE `cv` (
   `c_id` varchar(255) NOT NULL,
@@ -17,8 +29,20 @@ CREATE TABLE `cv` (
   `user_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `cv` (`c_id`, `about`, `experience`, `skill`, `education`, `user_id`) VALUES
-('648f3a9a685ca',	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus nobis dolore iure reiciendis, doloribus sint libero consequuntur, ipsum est error adipisci placeat qui voluptas quod numquam cupiditate aut quisquam obcaecati? Eos facere, consequatur harum voluptatem saepe ipsa distinctio ea ex ipsum ut? Doloribus sint voluptatum maxime laudantium porro molestias blanditiis?',	'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus nobis dolore iure reiciendis, doloribus sint libero consequuntur, ipsum est error adipisci placeat qui voluptas quod numquam cupiditate aut quisquam obcaecati? Eos facere, consequatur harum voluptatem saepe ipsa distinctio ea ex ipsum ut? Doloribus sint voluptatum maxime laudantium porro molestias blanditiis?',	'web development',	'higher national diploma',	'zBUuwsT2vlZ4nQrXKNU1');
+
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE `post` (
+  `job_id` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `job_type` varchar(100) NOT NULL,
+  `apply_before` timestamp NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `requirements` longtext NOT NULL,
+  `com_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `salary` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -28,11 +52,9 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `contact` varchar(12) NOT NULL,
   `location` varchar(100) NOT NULL,
-  `image` varchar(255) NOT NULL
+  `image` varchar(255) NOT NULL,
+  `profession` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `contact`, `location`, `image`) VALUES
-('zBUuwsT2vlZ4nQrXKNU1',	'khilji',	'ishan@gmail.com',	'30531c2885ce61b385dc81d2a375f6bef80607d5',	'0711976100',	'Stark',	'pvH0KMjWoxmxXa5Z16Kf.'),
-('lRCzEhsGPXkkUOWoW0TG',	'khan',	'khan@gmail.com',	'30531c2885ce61b385dc81d2a375f6bef80607d5',	'0711976100',	'Stark',	'cyxjK2poAkTEHuk0WwvN.jpg');
 
--- 2023-06-18 17:29:09
+-- 2023-06-21 14:43:13
