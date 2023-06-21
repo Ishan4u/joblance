@@ -11,7 +11,7 @@ if (isset($_COOKIE['user_id'])) {
 
 /* company */
 if (isset($_COOKIE['com_id'])) {
-    $user_id = $_COOKIE['com_id'];
+    $com_id = $_COOKIE['com_id'];
 } else {
     $com_id = '';
 }
@@ -63,13 +63,13 @@ if (isset($_POST['submit'])) {
         $insert_user->execute([$com_id, $com_name, $email, $contact, $location, $cpass, $rename]);
         move_uploaded_file($image_tmp_name, $image_folder);
   
-        $verify_user = $conn->prepare("SELECT * FROM `company` WHERE email = ? AND password = ? LIMIT 1");
-        $verify_user->execute([$email, $pass]);
-        $row = $verify_user->fetch(PDO::FETCH_ASSOC);
+        $verify_company = $conn->prepare("SELECT * FROM `company` WHERE email = ? AND password = ? LIMIT 1");
+        $verify_company->execute([$email, $pass]);
+        $row = $verify_company->fetch(PDO::FETCH_ASSOC);
   
-        if ($verify_user->rowCount() > 0) {
-          setcookie('user_id', $row['id'], time() + 60 * 60 * 24 * 30, '/');
-          header('location:index.php');
+        if ($verify_company->rowCount() > 0) {
+          setcookie('com_id', $row['com_id'], time() + 60 * 60 * 24 * 30, '/');
+          header('location:company-profile.php');
         }
       }
     }
