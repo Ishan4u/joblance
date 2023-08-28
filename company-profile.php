@@ -7,7 +7,18 @@ if (isset($_COOKIE['com_id'])) {
     header('location:company-sign-in.php');
 }
 
+// delete job
+if(isset($_POST['delete'])){
+    $d_id = $_POST['delete'];
+    $delete = $conn->prepare("DELETE FROM post WHERE job_id = ?");
+    if($delete->execute([$d_id])){
+      echo '<script> alert("Deleted") </script>';
+    }
+   
+  }
+
 ?>
+
 <?php include 'components/header.php'; ?>
 
 <!-- Starts profile section -->
@@ -44,17 +55,23 @@ $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="recieve_request.php">
                                 <i class="bx bx-briefcase"></i>
                                 Recieved Requests
                             </a>
                         </li>
                         <li>
+                            <a href="selected_request.php">
+                                <i class="bx bx-briefcase"></i>
+                                Selected Requests
+                            </a>
+                        </li>
+                        <!-- <li>
                             <a href="#">
                                 <i class="bx bx-envelope"></i>
                                 Messages
                             </a>
-                        </li>
+                        </li> -->
                         <!-- <li>
                   <a href="#">
                     <i class="bx bx-heart"></i>
@@ -73,12 +90,12 @@ $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
                     Delete Account
                   </a>
                 </li> -->
-                        <li>
+                        <!-- <li>
                             <a href="company-sign-out.php">
                                 <i class="bx bx-log-out"></i>
                                 Sign Out
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -113,7 +130,7 @@ $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
                                         <div class="col-lg-6">
                                             <div class="job-info">
                                                 <h3>
-                                                    <a href="job-details.html"><?php echo $fetch_post['title']; ?></a>
+                                                    <a href="job-details.php?get_id=<?php echo $fetch_post['job_id']; ?>"><?php echo $fetch_post['title']; ?></a>
                                                 </h3>
                                                 <ul>
                                                     <!-- <li>Via <a href="#">Tourt Design LTD</a></li> -->
@@ -132,6 +149,10 @@ $fetch_company = $select_company->fetch(PDO::FETCH_ASSOC);
                                                     Edit
                                                     
                                                 </p>
+                                                <form method="post">
+                                                <button type="submit" name="delete" value="<?php echo $fetch_post['job_id']; ?>" style="color:red;"  >Delete</button>
+                                                </form>
+                                                
                                             </div>
                                         </div>
                                     </div>

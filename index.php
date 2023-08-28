@@ -98,8 +98,8 @@ if (isset($_POST['search_btn'])) { ?>
                         <div class="col-lg-3 col-sm-6">
                             <div class="company-card">
                                 <div class="company-logo">
-                                    <a href="job-grid.html">
-                                        <img src="assets/img/top-company/1.png" alt="company logo">
+                                    <a href="job-details.php?get_id=<?= $fetch_search['job_id']; ?>">
+                                        <img src="uploaded_files/<?= $fetch_search['image']; ?>" alt="company logo">
                                     </a>
                                 </div>
                                 <div class="company-text">
@@ -148,13 +148,13 @@ if (isset($_POST['search_btn'])) { ?>
             $select_post->execute();
             if ($select_post->rowCount() > 0) {
                 while ($fetch_post = $select_post->fetch(PDO::FETCH_ASSOC)) { ?>
-
+            
                     <div class="col-sm-6">
                         <div class="job-card">
                             <div class="row align-items-center">
                                 <div class="col-lg-3">
                                     <div class="thumb-img">
-                                        <a href="job-details.html">
+                                        <a href="job-details.php?get_id=<?= $fetch_post['job_id']; ?>">
                                             <img src="uploaded_files/<?= $fetch_post['image']; ?>" alt="company logo">
                                         </a>
                                     </div>
@@ -162,7 +162,7 @@ if (isset($_POST['search_btn'])) { ?>
                                 <div class="col-lg-6">
                                     <div class="job-info">
                                         <h3>
-                                            <a href="job-details.html">
+                                            <a href="job-details.php?get_id=<?= $fetch_post['job_id']; ?>">
                                                 <?php echo $fetch_post['title']; ?>
                                             </a>
                                         </h3>
@@ -181,10 +181,7 @@ if (isset($_POST['search_btn'])) { ?>
                                             <?php echo $fetch_post['job_type']; ?>
                                         </span>
 
-                                        <p>
-                                            Edit
-
-                                        </p>
+                                        <a id="view-btn" href="job-details.php?get_id=<?= $fetch_post['job_id']; ?>">View</a>
                                     </div>
                                 </div>
                             </div>

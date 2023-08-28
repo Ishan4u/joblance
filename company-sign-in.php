@@ -11,6 +11,8 @@ if (isset($_COOKIE['com_id'])) {
     $com_id = '';
 }
 
+$message = '';
+
 
 if (isset($_POST['submit'])) {
 
@@ -23,6 +25,7 @@ if (isset($_POST['submit'])) {
     $select_company->execute([$email, $pass]);
     $row = $select_company->fetch(PDO::FETCH_ASSOC);
 
+    
     if ($select_company->rowCount() > 0) {
         setcookie('com_id', $row['com_id'], time() + 60 * 60 * 24 * 30, '/');
         header('location:company-profile.php');

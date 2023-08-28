@@ -5,6 +5,14 @@ body {
   color: #707070;
   line-height: 1.6;
 }
+#view-btn{
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+  background-color: #e22626;
+  /* font-weight: bold; */
+}
 img {
   max-width: 100%;
 }

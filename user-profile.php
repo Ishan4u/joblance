@@ -68,7 +68,14 @@ if (isset($_POST['save'])) {
             <a href="update-user.php?get_id=<?= $fetch_user['id']; ?>" >Edit</a>
             
           </div>
+
+          <div style="margin-top:5px; font-weight:bold; cursor:pointer;" class="candidate-social">
+          <a href="applied-job.php" id="view-btn" >View Applied Jobs</a>
+          </div>
+          
         </div>
+
+        
       </div>
       <div class="col-lg-8">
 

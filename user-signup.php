@@ -84,19 +84,19 @@ if (isset($_POST['submit'])) {
           </div>
           <div class="form-group">
             <label>Enter contact</label>
-            <input type="text" name="contact" class="form-control" placeholder="Enter Your Email" required />
+            <input type="text" name="contact" class="form-control" placeholder="Enter Your contact" required />
           </div>
           <div class="form-group">
             <label>Enter location</label>
-            <input type="text" name="location" class="form-control" placeholder="Enter Your Email" required />
+            <input type="text" name="location" class="form-control" placeholder="Enter Your location" required />
           </div>
           <div class="form-group">
             <label>Enter profession</label>
-            <input type="text" name="profession" class="form-control" placeholder="Enter Your Email" required />
+            <input type="text" name="profession" class="form-control" placeholder="Enter Your profession" required />
           </div>
           <div class="form-group">
             <label>Select pic</label>
-            <input type="file" name="image" class="form-control" placeholder="Enter Your Email" required />
+            <input type="file" name="image" class="form-control"  required />
           </div>
           <div class="form-group">
             <label>Enter Password</label>
@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
           </div>
           <div class="form-group">
             <label>Enter confirm Password</label>
-            <input type="password" name="cpass" class="form-control" placeholder="Enter Your Password" required />
+            <input type="password" name="cpass" class="form-control" placeholder="Confirm Password" required />
           </div>
           <div class="signup-btn text-center">
             <button name="submit" type="submit">Sign Up</button>
